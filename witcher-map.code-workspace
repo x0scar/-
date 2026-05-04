@@ -1,0 +1,32 @@
+{
+  "folders": [
+    {
+      "name": "🐺 The Continent — RPG Map",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    "workbench.colorTheme": "Default Dark+",
+    "editor.bracketPairColorization.enabled": true,
+    "explorer.fileNesting.enabled": true,
+    "editor.minimap.enabled": false
+  },
+  "extensions": {
+    "recommendations": [
+      "ritwickdey.LiveServer",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss",
+      "formulahendry.auto-rename-tag"
+    ]
+  }
+}

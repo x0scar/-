@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="paper" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="blur-sm">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <filter id="inner-shadow">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="black" flood-opacity="0.3" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(20,12,4,0.6)"/>
+    </radialGradient>
+    <linearGradient id="sea-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a4a6b"/>
+      <stop offset="100%" stop-color="#1a3050"/>
+    </linearGradient>
+    <linearGradient id="land-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b7355"/>
+      <stop offset="50%" stop-color="#a0845c"/>
+      <stop offset="100%" stop-color="#7a6245"/>
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#5a7a9a" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    <pattern id="mountain-pattern" width="30" height="20" patternUnits="userSpaceOnUse">
+      <polygon points="15,2 5,18 25,18" fill="none" stroke="#6b5a3e" stroke-width="1" opacity="0.5"/>
+      <polygon points="22,6 14,18 30,18" fill="none" stroke="#6b5a3e" stroke-width="0.8" opacity="0.4"/>
+    </pattern>
+    <pattern id="forest-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="5" fill="#3a5a2a" opacity="0.25"/>
+      <circle cx="0" cy="0" r="4" fill="#2d4a22" opacity="0.2"/>
+      <circle cx="20" cy="20" r="4" fill="#2d4a22" opacity="0.2"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b5a3e" opacity="0.4"/>
+    </marker>
+  </defs>
+
+  <!-- Ocean background -->
+  <rect width="1600" height="900" fill="url(#sea-grad)"/>
+  <!-- Sea texture -->
+  <rect width="1600" height="900" fill="url(#hatch)"/>
+  
+  <!-- Sea wave lines -->
+  <g opacity="0.15" stroke="#7aadcf" stroke-width="0.8" fill="none">
+    <path d="M0,80 Q100,70 200,85 Q300,95 400,78 Q500,65 600,82"/>
+    <path d="M0,160 Q120,150 240,165 Q360,175 480,158 Q600,145 700,162"/>
+    <path d="M900,50 Q1000,40 1100,55 Q1200,65 1300,48 Q1400,35 1500,52"/>
+    <path d="M1000,820 Q1100,810 1200,825 Q1300,835 1400,818 Q1500,805 1600,822"/>
+    <path d="M50,820 Q150,808 250,823 Q350,833 450,816 Q550,803 650,820"/>
+  </g>
+
+  <!-- === MAIN CONTINENT LANDMASS === -->
+  
+  <!-- Northern Kingdoms main body -->
+  <path d="M380,120 Q420,90 480,85 Q540,78 600,90 Q660,100 720,88 Q790,75 850,82 Q920,90 970,78 Q1030,65 1090,72 Q1150,80 1200,95 Q1240,108 1270,130 Q1300,155 1310,185 Q1318,215 1305,245 Q1290,275 1270,300 Q1250,325 1230,348 Q1210,370 1190,390 Q1170,410 1155,432 Q1140,455 1130,480 Q1122,505 1118,530 Q1115,555 1112,580 Q1108,608 1100,630 Q1090,655 1075,672 Q1055,690 1030,698 Q1000,706 968,700 Q935,692 905,680 Q870,665 845,645 Q820,625 808,600 Q798,578 800,552 Q802,528 808,505 Q812,482 810,458 Q808,435 798,415 Q785,392 768,375 Q750,358 730,345 Q708,332 688,320 Q668,308 650,292 Q632,276 620,258 Q610,242 608,222 Q607,205 615,190 Q624,175 638,165 Q655,155 675,150 Q695,147 712,152 Q728,158 738,170 Q745,180 740,192 Q733,202 720,208 Q706,212 692,208 Q680,204 675,194" fill="url(#land-grad)" stroke="#5a4a2e" stroke-width="2"/>
+  
+  <!-- Nilfgaard / Southern Continent extension -->
+  <path d="M808,600 Q820,625 845,645 Q870,665 905,680 Q935,692 968,700 Q1000,706 1030,698 Q1055,690 1075,672 Q1095,658 1108,638 Q1125,618 1132,598 Q1145,620 1155,645 Q1168,675 1175,705 Q1182,735 1185,765 Q1188,792 1180,815 Q1170,838 1150,852 Q1125,865 1095,862 Q1062,858 1032,845 Q1000,832 972,815 Q945,798 920,778 Q895,758 875,735 Q855,712 840,685 Q825,658 815,632 Q806,610 808,600Z" fill="#7a6a45" stroke="#5a4a2e" stroke-width="1.5"/>
+  
+  <!-- Skellige Islands -->
+  <path d="M180,240 Q210,228 240,235 Q265,242 278,260 Q288,278 280,298 Q270,316 250,322 Q228,328 208,318 Q188,308 180,288 Q172,268 180,248Z" fill="#7a7060" stroke="#5a4a2e" stroke-width="1.5"/>
+  <path d="M285,195 Q308,185 328,192 Q345,200 350,218 Q355,236 342,250 Q328,262 308,260 Q288,258 278,242 Q270,228 278,212Z" fill="#7a7060" stroke="#5a4a2e" stroke-width="1.5"/>
+  <path d="M145,305 Q165,295 182,305 Q195,315 192,332 Q188,348 172,355 Q155,360 142,350 Q130,340 135,322Z" fill="#7a7060" stroke="#5a4a2e" stroke-width="1.5"/>
+  <path d="M95,270 Q112,262 125,270 Q136,280 132,295 Q128,308 115,312 Q100,315 90,305 Q82,294 88,278Z" fill="#7a7060" stroke="#5a4a2e" stroke-width="1.5"/>
+  <path d="M230,300 Q248,292 262,300 Q272,310 268,325 Q262,338 248,342 Q232,345 222,334 Q214,322 220,308Z" fill="#7a7060" stroke="#5a4a2e" stroke-width="1.5"/>
+
+  <!-- Kovir peninsula -->
+  <path d="M970,78 Q1010,55 1050,48 Q1090,42 1125,55 Q1148,65 1158,85 Q1165,102 1155,118 Q1145,132 1128,138 Q1110,142 1090,132 Q1072,122 1060,108 Q1048,94 1038,82 Q1025,72 1010,70 Q995,70 985,76Z" fill="#8a7a55" stroke="#5a4a2e" stroke-width="1.5"/>
+
+  <!-- Redania/Kaedwen northern forests region detail -->
+  <path d="M620,90 Q660,85 700,92 Q740,100 775,90 Q810,80 850,85 Q885,92 910,108 Q920,118 912,132 Q900,145 882,148 Q862,150 840,142 Q818,134 798,128 Q775,122 752,126 Q730,132 710,140 Q688,148 665,145 Q642,140 625,128 Q610,118 612,104Z" fill="#6a8a4a" opacity="0.4"/>
+  
+  <!-- Forest overlays -->
+  <ellipse cx="720" cy="200" rx="80" ry="50" fill="url(#forest-pattern)" opacity="0.8"/>
+  <ellipse cx="880" cy="180" rx="70" ry="45" fill="url(#forest-pattern)" opacity="0.8"/>
+  <ellipse cx="650" cy="280" rx="60" ry="40" fill="url(#forest-pattern)" opacity="0.7"/>
+  <ellipse cx="960" cy="260" rx="65" ry="42" fill="url(#forest-pattern)" opacity="0.7"/>
+  <ellipse cx="1050" cy="200" rx="55" ry="35" fill="url(#forest-pattern)" opacity="0.6"/>
+  <ellipse cx="1100" cy="320" rx="70" ry="45" fill="url(#forest-pattern)" opacity="0.7"/>
+  <ellipse cx="840" cy="340" rx="50" ry="32" fill="url(#forest-pattern)" opacity="0.6"/>
+
+  <!-- Mountain ranges (Kestrel/Blue Mountains) -->
+  <g opacity="0.7">
+    <!-- Blue Mountains east border -->
+    <polygon points="1220,120 1205,148 1238,148" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1240,105 1225,135 1258,135" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1258,118 1242,148 1275,148" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1272,135 1255,165 1290,165" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1285,155 1268,185 1302,185" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1295,178 1278,210 1312,210" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1300,205 1282,238 1318,238" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    
+    <!-- Kestrel Mountains south -->
+    <polygon points="1050,480 1035,508 1068,508" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1068,465 1052,495 1085,495" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1085,478 1068,508 1102,508" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1100,490 1082,522 1118,522" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+    <polygon points="1112,512 1094,545 1130,545" fill="#8a8070" stroke="#5a4a2e" stroke-width="0.8"/>
+  </g>
+
+  <!-- Rivers -->
+  <g fill="none" stroke="#4a7a9a" stroke-width="1.8" opacity="0.7">
+    <!-- Pontar River -->
+    <path d="M1280,240 Q1240,255 1200,265 Q1155,275 1110,268 Q1068,260 1028,248 Q985,236 945,228 Q900,220 858,225 Q818,230 782,245 Q745,260 715,280 Q682,300 658,325 Q635,350 625,380 Q618,405 625,432" stroke-width="2.2"/>
+    <!-- Buina -->
+    <path d="M850,82 Q840,120 848,158 Q856,195 870,228"/>
+    <!-- Yaruga -->
+    <path d="M808,600 Q770,585 730,572 Q685,558 640,550 Q595,542 550,548 Q508,555 475,570"/>
+  </g>
+
+  <!-- === REGION LABELS (medieval map style) === -->
+  <g font-family="'Palatino Linotype', Palatino, serif" fill="#3a2a12" opacity="0.85">
+    
+    <!-- Redania -->
+    <text x="820" y="165" font-size="22" font-style="italic" font-weight="bold" text-anchor="middle" letter-spacing="3">REDANIA</text>
+    
+    <!-- Kaedwen -->
+    <text x="1080" y="200" font-size="19" font-style="italic" text-anchor="middle" letter-spacing="2" opacity="0.8">KAEDWEN</text>
+    
+    <!-- Temeria -->
+    <text x="700" y="310" font-size="20" font-style="italic" font-weight="bold" text-anchor="middle" letter-spacing="2">TEMERIA</text>
+    
+    <!-- Aedirn -->
+    <text x="1050" y="380" font-size="18" font-style="italic" text-anchor="middle" letter-spacing="2" opacity="0.8">AEDIRN</text>
+    
+    <!-- Lyria & Rivia -->
+    <text x="940" y="475" font-size="14" font-style="italic" text-anchor="middle" letter-spacing="1.5" opacity="0.75">LYRIA &amp; RIVIA</text>
+    
+    <!-- Nilfgaard -->
+    <text x="1010" y="760" font-size="24" font-style="italic" font-weight="bold" text-anchor="middle" letter-spacing="4">NILFGAARD</text>
+    
+    <!-- Kovir -->
+    <text x="1065" y="88" font-size="14" font-style="italic" text-anchor="middle" letter-spacing="2" opacity="0.75">KOVIR</text>
+    
+    <!-- Great Sea -->
+    <text x="120" y="180" font-size="16" font-style="italic" text-anchor="middle" letter-spacing="3" fill="#6a9aba" opacity="0.9">GREAT</text>
+    <text x="120" y="200" font-size="16" font-style="italic" text-anchor="middle" letter-spacing="3" fill="#6a9aba" opacity="0.9">SEA</text>
+    
+    <!-- Skellige -->
+    <text x="210" y="375" font-size="15" font-style="italic" text-anchor="middle" letter-spacing="2" fill="#3a3a5a" opacity="0.8">SKELLIGE</text>
+    <text x="210" y="393" font-size="15" font-style="italic" text-anchor="middle" letter-spacing="2" fill="#3a3a5a" opacity="0.8">ISLES</text>
+    
+    <!-- Mahakam (dwarven mountains) -->
+    <text x="1182" y="258" font-size="12" font-style="italic" text-anchor="middle" opacity="0.7" transform="rotate(-30,1182,258)">MAHAKAM</text>
+  </g>
+
+  <!-- Compass Rose -->
+  <g transform="translate(1480, 120)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="42" fill="rgba(200,170,100,0.15)" stroke="#8a6a30" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="30" fill="rgba(200,170,100,0.1)" stroke="#8a6a30" stroke-width="1"/>
+    <!-- Points -->
+    <polygon points="0,-42 5,-12 0,-20 -5,-12" fill="#8a6a30"/>
+    <polygon points="0,42 5,12 0,20 -5,12" fill="#8a6a30" opacity="0.7"/>
+    <polygon points="-42,0 -12,5 -20,0 -12,-5" fill="#8a6a30" opacity="0.7"/>
+    <polygon points="42,0 12,5 20,0 12,-5" fill="#8a6a30" opacity="0.7"/>
+    <!-- Diagonal points -->
+    <polygon points="30,-30 10,-8 6,-14" fill="#8a6a30" opacity="0.4"/>
+    <polygon points="-30,-30 -10,-8 -6,-14" fill="#8a6a30" opacity="0.4"/>
+    <polygon points="30,30 10,8 6,14" fill="#8a6a30" opacity="0.4"/>
+    <polygon points="-30,30 -10,8 -6,14" fill="#8a6a30" opacity="0.4"/>
+    <!-- Center -->
+    <circle cx="0" cy="0" r="5" fill="#8a6a30"/>
+    <!-- N label -->
+    <text x="0" y="-50" font-family="Palatino, serif" font-size="14" fill="#8a6a30" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="62" font-family="Palatino, serif" font-size="11" fill="#8a6a30" text-anchor="middle" opacity="0.7">S</text>
+    <text x="-54" y="4" font-family="Palatino, serif" font-size="11" fill="#8a6a30" text-anchor="middle" opacity="0.7">W</text>
+    <text x="54" y="4" font-family="Palatino, serif" font-size="11" fill="#8a6a30" text-anchor="middle" opacity="0.7">E</text>
+  </g>
+
+  <!-- Scale bar -->
+  <g transform="translate(60, 840)">
+    <rect x="0" y="0" width="120" height="8" fill="none" stroke="#8a6a30" stroke-width="1.5"/>
+    <rect x="0" y="0" width="30" height="8" fill="#8a6a30" opacity="0.7"/>
+    <rect x="60" y="0" width="30" height="8" fill="#8a6a30" opacity="0.7"/>
+    <text x="0" y="22" font-family="Palatino, serif" font-size="10" fill="#5a4a2e">0</text>
+    <text x="55" y="22" font-family="Palatino, serif" font-size="10" fill="#5a4a2e">50</text>
+    <text x="108" y="22" font-family="Palatino, serif" font-size="10" fill="#5a4a2e">100 mi</text>
+  </g>
+
+  <!-- Map border decorative frame -->
+  <rect x="8" y="8" width="1584" height="884" fill="none" stroke="#8a6a30" stroke-width="3" rx="2"/>
+  <rect x="18" y="18" width="1564" height="864" fill="none" stroke="#8a6a30" stroke-width="1" rx="1" opacity="0.5"/>
+  
+  <!-- Corner ornaments -->
+  <g fill="none" stroke="#8a6a30" stroke-width="1.5" opacity="0.8">
+    <path d="M8,8 L50,8 M8,8 L8,50"/>
+    <path d="M1592,8 L1550,8 M1592,8 L1592,50"/>
+    <path d="M8,892 L50,892 M8,892 L8,850"/>
+    <path d="M1592,892 L1550,892 M1592,892 L1592,850"/>
+  </g>
+  <circle cx="8" cy="8" r="4" fill="#8a6a30" opacity="0.8"/>
+  <circle cx="1592" cy="8" r="4" fill="#8a6a30" opacity="0.8"/>
+  <circle cx="8" cy="892" r="4" fill="#8a6a30" opacity="0.8"/>
+  <circle cx="1592" cy="892" r="4" fill="#8a6a30" opacity="0.8"/>
+
+  <!-- Title banner -->
+  <g transform="translate(400, 820)">
+    <rect x="-10" y="-28" width="440" height="42" fill="rgba(160,130,70,0.2)" stroke="#8a6a30" stroke-width="1.5" rx="2"/>
+    <text x="210" y="-4" font-family="'Palatino Linotype', Palatino, serif" font-size="20" fill="#5a3a10" text-anchor="middle" font-weight="bold" font-style="italic" letter-spacing="4">THE CONTINENT — NORTHERN KINGDOMS</text>
+  </g>
+
+  <!-- Vignette overlay -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+  
+  <!-- Paper texture overlay -->
+  <rect width="1600" height="900" fill="rgba(180,148,90,0.08)" filter="url(#paper)"/>
+</svg>
